@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petualangan Si Penyimak Cerdas - Kelas II SD N 028 Senayang</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Fredoka (Friendly Ceria) & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ocean: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        },
+                        sun: {
+                            100: '#fef9c3',
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                        },
+                        cheerful: {
+                            pink: '#f472b6',
+                            purple: '#a855f7',
+                            green: '#22c55e',
+                            orange: '#f97316'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Fredoka', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f0f9ff;
+            touch-action: manipulation;
+        }
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Fredoka', cursive;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #e0f2fe;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #38bdf8;
+            border-radius: 10px;
+        }
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(-3%); }
+            50% { transform: translateY(0); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 2s infinite ease-in-out;
+        }
+        @keyframes wave-pulse {
+            0%, 100% { transform: scaleY(0.4); }
+            50% { transform: scaleY(1); }
+        }
+        .animate-wave {
+            display: inline-block;
+            animation: wave-pulse 1s infinite ease-in-out;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { background: white; font-size: 12pt; }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-800 flex flex-col justify-between selection:bg-ocean-500 selection:text-white">
+
+    <!-- HEADER NAVIGATION -->
+    <header id="main-header" class="bg-gradient-to-r from-ocean-500 via-sky-500 to-teal-400 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('welcome')">
+                <div class="bg-white/20 p-2 rounded-2xl backdrop-blur-md">
+                    <i class="fa-solid fa-headphones-simple text-3xl text-sun-300"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg md:text-xl font-bold tracking-wide leading-tight">PETUALANGAN SI PENYIMAK CERDAS</h1>
+                    <p class="text-xs text-ocean-100 font-medium">
+                        <i class="fa-solid fa-school mr-1"></i> SD N 028 Senayang • Kelas II SD
+                    </p>
+                </div>
+            </div>
+            <div id="user-badge" class="hidden flex items-center bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/30">
+                <i class="fa-solid fa-face-smile text-sun-300 mr-2 text-xl"></i>
+                <span id="header-student-name" class="font-bold text-sm truncate max-w-[100px] md:max-w-[180px]">Siswa</span>
+                <button onclick="confirmResetUser()" class="ml-2 text-xs bg-rose-500 hover:bg-rose-600 px-2 py-0.5 rounded-full text-white transition" title="Ganti Nama">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- ================= 1. HALAMAN PEMBUKA ================= -->
+        <section id="sec-welcome" class="space-y-6">
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border-4 border-ocean-100 text-center relative overflow-hidden">
+                <!-- Mascot & Background Decoration -->
+                <div class="absolute -top-10 -right-10 w-36 h-36 bg-sun-100 rounded-full blur-xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-36 h-36 bg-ocean-100 rounded-full blur-xl"></div>
+
+                <div class="relative z-10 max-w-xl mx-auto space-y-5">
+                    <div class="inline-block bg-sun-100 text-amber-800 px-4 py-1.5 rounded-full font-bold text-xs md:text-sm border border-sun-300">
+                        <i class="fa-solid fa-star text-sun-500 mr-1"></i> Bahasa Indonesia • Kelas II SD • Elemen Menyimak
+                    </div>
+
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-ocean-700 leading-tight">
+                        PETUALANGAN SI PENYIMAK CERDAS
+                    </h2>
+                    
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                        Halo teman-teman kelas II <span class="font-bold text-ocean-600">SD Negeri 028 Senayang</span>! Mari dengarkan cerita percakapan yang seru tentang diri, keluarga, dan pantai kita!
+                    </p>
+
+                    <!-- Student Profile Form -->
+                    <div class="bg-ocean-50/90 p-5 md:p-6 rounded-2xl border-2 border-ocean-200 shadow-inner text-left max-w-md mx-auto space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Siapa Namamu?</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-ocean-400">
+                                    <i class="fa-solid fa-circle-user text-lg"></i>
+                                </span>
+                                <input type="text" id="input-student-name" placeholder="Ketik nama lengkapmu di sini..." class="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-ocean-200 focus:border-ocean-500 outline-none text-slate-800 font-bold text-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Kelas / No. Absen:</label>
+                            <input type="text" id="input-student-class" value="Kelas II SD" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 font-bold text-sm bg-white text-slate-600">
+                        </div>
+
+                        <button onclick="startApp()" class="w-full bg-gradient-to-r from-sun-400 to-amber-500 hover:from-sun-500 hover:to-amber-600 text-amber-950 font-bold text-lg py-3.5 px-6 rounded-2xl shadow-lg transform hover:scale-[1.02] transition flex items-center justify-center gap-2">
+                            <span>MULAI PETUALANGAN!</span>
+                            <i class="fa-solid fa-circle-play text-2xl text-amber-950"></i>
+                        </button>
+                    </div>
+
+                    <!-- Metadata -->
+                    <div class="pt-3 border-t border-slate-100 text-xs text-slate-400 flex justify-center gap-4">
+                        <span><i class="fa-solid fa-location-dot text-ocean-500"></i> Senayang, Lingga, Kepri</span>
+                        <span><i class="fa-solid fa-chalkboard-user text-ocean-500"></i> Guru Kelas II</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 2. MENU UTAMA ================= -->
+        <section id="sec-menu" class="hidden space-y-6">
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-ocean-100 flex flex-col md:flex-row justify-between items-center gap-3">
+                <div>
+                    <h2 class="text-2xl font-bold text-ocean-700">Pilih Kegiatanmu!</h2>
+                    <p class="text-xs text-slate-500">Klik tombol di bawah untuk mulai mendengarkan dan belajar.</p>
+                </div>
+                <div class="flex items-center gap-2 bg-ocean-50 px-3 py-1.5 rounded-2xl border border-ocean-200 text-xs">
+                    <i class="fa-solid fa-volume-high text-ocean-600"></i>
+                    <span id="tts-status-badge" class="text-emerald-600 font-bold">Suara Audio Siap</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Menu 1 -->
+                <div onclick="navigateTo('tujuan')" class="bg-white p-4 rounded-2xl border-2 border-slate-100 hover:border-ocean-400 shadow hover:shadow-lg transition cursor-pointer group flex items-center gap-4">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-blue-500 uppercase">Menu 1</span>
+                        <h3 class="text-base font-bold text-slate-800">Tujuan Pembelajaran</h3>
+                        <p class="text-[11px] text-slate-400">Apa yang akan kita pelajari?</p>
+                    </div>
+                </div>
+
+                <!-- Menu 2 -->
+                <div onclick="navigateTo('pengenalan')" class="bg-white p-4 rounded-2xl border-2 border-slate-100 hover:border-teal-400 shadow hover:shadow-lg transition cursor-pointer group flex items-center gap-4">
+                    <div class="w-12 h-12 bg-teal-100 text-teal-600 rounded-2xl flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-ear-listen"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-teal-500 uppercase">Menu 2</span>
+                        <h3 class="text-base font-bold text-slate-800">Ayo Belajar Menyimak</h3>
+                        <p class="text-[11px] text-slate-400">Cara menyimak dengan baik.</p>
+                    </div>
+                </div>
+
+                <!-- Menu 3 -->
+                <div onclick="openConversation('diriku')" class="bg-white p-4 rounded-2xl border-2 border-slate-100 hover:border-amber-400 shadow hover:shadow-lg transition cursor-pointer group flex items-center gap-4">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-amber-500 uppercase">Menu 3</span>
+                        <h3 class="text-base font-bold text-slate-800">Percakapan: Diriku</h3>
+                        <p class="text-[11px] text-slate-400">Aku dan Teman Baruku (Siti & Beni).</p>
+                    </div>
+                </div>
+
+                <!-- Menu 4 -->
+                <div onclick="openConversation('keluargaku')" class="bg-white p-4 rounded-2xl border-2 border-slate-100 hover:border-emerald-400 shadow hover:shadow-lg transition cursor-pointer group flex items-center gap-4">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-house-user"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-emerald-500 uppercase">Menu 4</span>
+                        <h3 class="text-base font-bold text-slate-800">Percakapan: Keluargaku</h3>
+                        <p class="text-[11px] text-slate-400">Membantu Ibu di Rumah (Ibu & Dina).</p>
+                    </div>
+                </div>
+
+                <!-- Menu 5 -->
+                <div onclick="openConversation('lingkungan')" class="bg-white p-4 rounded-2xl border-2 border-slate-100 hover:border-cyan-400 shadow hover:shadow-lg transition cursor-pointer group flex items-center gap-4">
+                    <div class="w-12 h-12 bg-cyan-100 text-cyan-600 rounded-2xl flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-cyan-500 uppercase">Menu 5</span>
+                        <h3 class="text-base font-bold text-slate-800">Percakapan: Lingkunganku</h3>
+                        <p class="text-[11px] text-slate-400">Menjaga Kebersihan Pantai (Andi & Mira).</p>
+                    </div>
+                </div>
+
+                <!-- Menu 6 & 7 -->
+                <div onclick="navigateTo('permainan')" class="bg-white p-4 rounded-2xl border-2 border-slate-100 hover:border-purple-400 shadow hover:shadow-lg transition cursor-pointer group flex items-center gap-4">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-purple-500 uppercase">Menu 6 & 7</span>
+                        <h3 class="text-base font-bold text-slate-800">Permainan Menyimak</h3>
+                        <p class="text-[11px] text-slate-400">4 Permainan edukatif bertabur bintang!</p>
+                    </div>
+                </div>
+
+                <!-- Menu 8 -->
+                <div onclick="startQuiz()" class="bg-white p-4 rounded-2xl border-2 border-slate-100 hover:border-rose-400 shadow hover:shadow-lg transition cursor-pointer group flex items-center gap-4">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-rose-500 uppercase">Menu 8</span>
+                        <h3 class="text-base font-bold text-slate-800">Kuis Ceria</h3>
+                        <p class="text-[11px] text-slate-400">10 Soal pilihan seru!</p>
+                    </div>
+                </div>
+
+                <!-- Menu 9 -->
+                <div onclick="navigateTo('tantangan')" class="bg-white p-4 rounded-2xl border-2 border-slate-100 hover:border-indigo-400 shadow hover:shadow-lg transition cursor-pointer group flex items-center gap-4">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-comment-dots"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-indigo-500 uppercase">Menu 9</span>
+                        <h3 class="text-base font-bold text-slate-800">Tantangan Menceritakan</h3>
+                        <p class="text-[11px] text-slate-400">Ceritakan kembali isi percakapan.</p>
+                    </div>
+                </div>
+
+                <!-- Menu 10 & 11 -->
+                <div onclick="showReport()" class="bg-gradient-to-br from-ocean-500 to-teal-500 text-white p-4 rounded-2xl shadow hover:shadow-xl transition cursor-pointer group flex items-center justify-between sm:col-span-2 lg:col-span-3">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-solid fa-award text-sun-300"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-bold text-sun-200 uppercase">Menu 10 & 11</span>
+                            <h3 class="text-lg font-bold">Hasil Belajarku & Simpan ke Google Dokumen</h3>
+                            <p class="text-xs text-ocean-100">Lihat nilai akhir dan kirimkan ke Google Dokumen guru.</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xl"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 3. TUJUAN PEMBELAJARAN ================= -->
+        <section id="sec-tujuan" class="hidden space-y-6">
+            <div class="flex items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <button onclick="navigateTo('menu')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Menu Utama
+                </button>
+                <h2 class="text-lg font-bold text-ocean-700">Tujuan Pembelajaran</h2>
+            </div>
+
+            <div class="bg-gradient-to-r from-ocean-500 to-teal-400 text-white p-5 rounded-3xl shadow">
+                <p class="text-sm leading-relaxed">
+                    Setiap anak hebat kelas II SD Negeri 028 Senayang akan belajar menyimak dengan riang gembira!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-white p-4 rounded-2xl border-l-4 border-ocean-500 shadow-sm flex items-start gap-3">
+                    <div class="bg-ocean-100 text-ocean-600 w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shrink-0">1</div>
+                    <p class="text-xs text-slate-700 font-medium">Mendengarkan percakapan dengan tenang dan bersiap.</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border-l-4 border-teal-500 shadow-sm flex items-start gap-3">
+                    <div class="bg-teal-100 text-teal-600 w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shrink-0">2</div>
+                    <p class="text-xs text-slate-700 font-medium">Mengenali siapa saja tokoh yang sedang berbicara.</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border-l-4 border-amber-500 shadow-sm flex items-start gap-3">
+                    <div class="bg-amber-100 text-amber-600 w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shrink-0">3</div>
+                    <p class="text-xs text-slate-700 font-medium">Mengetahui hal penting yang sedang dibicarakan.</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border-l-4 border-emerald-500 shadow-sm flex items-start gap-3">
+                    <div class="bg-emerald-100 text-emerald-600 w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shrink-0">4</div>
+                    <p class="text-xs text-slate-700 font-medium">Menjawab pertanyaan dari percakapan yang didengarkan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 4. MATERI PENGENALAN MENYIMAK ================= -->
+        <section id="sec-pengenalan" class="hidden space-y-6">
+            <div class="flex items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <button onclick="navigateTo('menu')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Menu Utama
+                </button>
+                <h2 class="text-lg font-bold text-ocean-700">Ayo Belajar Menyimak!</h2>
+            </div>
+
+            <!-- Definition Card -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-ocean-100 space-y-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-sun-100 text-amber-600 rounded-2xl flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-ear-listen"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-800">Apa itu Menyimak?</h3>
+                </div>
+                <p class="text-slate-600 text-xs md:text-sm leading-relaxed bg-ocean-50/80 p-4 rounded-2xl border border-ocean-100">
+                    “<strong>Menyimak</strong> adalah mendengarkan dengan <span class="bg-sun-200 px-1 rounded font-bold">penuh perhatian</span> agar kita memahami apa yang disampaikan orang lain.”
+                </p>
+
+                <!-- Comparison -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                    <div class="bg-rose-50 p-4 rounded-2xl border border-rose-200">
+                        <span class="text-xs font-bold text-rose-700 block mb-1">👂 Mendengar Biasa</span>
+                        <p class="text-[11px] text-slate-600">Suara hanya masuk telinga tanpa kita perhatikan maknanya.</p>
+                    </div>
+                    <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
+                        <span class="text-xs font-bold text-emerald-700 block mb-1">🧠 Menyimak Cerdas</span>
+                        <p class="text-[11px] text-slate-600">Mendengarkan sungguh-sungguh untuk ingat tokoh dan isi cerita.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6 Steps -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-ocean-100 space-y-3">
+                <h3 class="text-sm font-bold text-slate-800">6 Langkah Menyimak Hebat:</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                    <div class="p-2.5 bg-ocean-50 rounded-xl border border-ocean-100 text-slate-700">1. Duduk tenang</div>
+                    <div class="p-2.5 bg-ocean-50 rounded-xl border border-ocean-100 text-slate-700">2. Siapkan perhatian</div>
+                    <div class="p-2.5 bg-ocean-50 rounded-xl border border-ocean-100 text-slate-700">3. Dengarkan selesai</div>
+                    <div class="p-2.5 bg-ocean-50 rounded-xl border border-ocean-100 text-slate-700">4. Ingat tokohnya</div>
+                    <div class="p-2.5 bg-ocean-50 rounded-xl border border-ocean-100 text-slate-700">5. Ingat informasinya</div>
+                    <div class="p-2.5 bg-ocean-50 rounded-xl border border-ocean-100 text-slate-700">6. Jawab pertanyaan</div>
+                </div>
+
+                <div class="pt-3 text-center">
+                    <button onclick="openConversation('diriku')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-3 rounded-2xl shadow transition text-xs inline-flex items-center gap-2">
+                        <span>Saya Siap Menyimak!</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 5, 6, 7. MODUL PERCAKAPAN ================= -->
+        <section id="sec-conversation" class="hidden space-y-6">
+            <div class="flex items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <button onclick="navigateTo('menu')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Menu Utama
+                </button>
+                <span id="conv-theme-badge" class="px-3 py-1 bg-ocean-100 text-ocean-800 rounded-full font-bold text-xs">Tema: Diriku</span>
+            </div>
+
+            <!-- Title & Player Box -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-ocean-100 space-y-5">
+                <div>
+                    <h2 id="conv-title" class="text-xl font-bold text-ocean-700">Percakapan</h2>
+                    <p id="conv-subtitle" class="text-xs text-slate-400">Subjudul Percakapan</p>
+                </div>
+
+                <!-- AUDIO PLAYER CONTROLLER -->
+                <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-5 rounded-2xl shadow-lg space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-ocean-500 rounded-xl flex items-center justify-center text-white">
+                                <i class="fa-solid fa-headphones text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xs" id="player-status-text">Siap Memutar Audio</h4>
+                                <p class="text-[10px] text-slate-400" id="player-speaker-info">Klik Putar Audio untuk mendengarkan</p>
+                            </div>
+                        </div>
+
+                        <!-- Equalizer Wave Animation -->
+                        <div id="wave-container" class="hidden flex items-end gap-1 h-5">
+                            <span class="w-1 bg-ocean-400 h-full animate-wave"></span>
+                            <span class="w-1 bg-sun-300 h-3/4 animate-wave" style="animation-delay: 0.2s"></span>
+                            <span class="w-1 bg-emerald-400 h-1/2 animate-wave" style="animation-delay: 0.4s"></span>
+                        </div>
+                    </div>
+
+                    <!-- Player Controls Button Row -->
+                    <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
+                        <button onclick="playConversationAudio()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-xl shadow transition text-xs flex items-center gap-1.5">
+                            <i class="fa-solid fa-play"></i> Putar Audio
+                        </button>
+                        <button onclick="pauseConversationAudio()" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-3 rounded-xl shadow transition text-xs flex items-center gap-1.5">
+                            <i class="fa-solid fa-pause"></i> Jeda
+                        </button>
+                        <button onclick="stopConversationAudio()" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-3 rounded-xl shadow transition text-xs flex items-center gap-1.5">
+                            <i class="fa-solid fa-rotate-left"></i> Ulangi
+                        </button>
+                    </div>
+
+                    <!-- Toggle Transcript Button -->
+                    <div class="flex justify-between items-center pt-2 border-t border-slate-700 text-[11px]">
+                        <span class="text-slate-400"><i class="fa-solid fa-info-circle"></i> Dengarkan dulu tanpa melihat teks ya!</span>
+                        <button onclick="toggleTranscript()" id="btn-toggle-transcript" class="bg-slate-700 hover:bg-slate-600 text-sun-300 px-3 py-1 rounded-lg font-bold">
+                            <i class="fa-solid fa-eye"></i> Tampilkan Teks
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TRANSCRIPT CONTAINER -->
+                <div id="transcript-box" class="hidden bg-ocean-50 p-4 rounded-2xl border border-ocean-200 space-y-2">
+                    <h4 class="font-bold text-ocean-800 text-xs border-b border-ocean-200 pb-1 flex items-center gap-1">
+                        <i class="fa-solid fa-file-lines"></i> Teks Percakapan
+                    </h4>
+                    <div id="transcript-content" class="space-y-2 text-xs leading-relaxed text-slate-700 max-h-60 overflow-y-auto custom-scrollbar">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <!-- TEACHER MANUAL READ MODE -->
+                <div class="bg-amber-50 p-3 rounded-xl border border-amber-200 text-[11px] text-amber-900 flex items-center gap-2">
+                    <i class="fa-solid fa-chalkboard-user text-amber-600 text-sm"></i>
+                    <span><strong>Mode Guru:</strong> Jika perangkat tidak bersuara, Bapak/Ibu Guru dapat membacakan percakapan ini secara langsung.</span>
+                </div>
+            </div>
+
+            <!-- QUESTIONS FOR CONVERSATION -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-ocean-100 space-y-4">
+                <h3 class="text-base font-bold text-slate-800 flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square text-ocean-600"></i> Jawab Pertanyaan Cerita
+                </h3>
+
+                <div id="conv-questions-container" class="space-y-3">
+                    <!-- Inserted by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 8. PERMAINAN MENYIMAK ================= -->
+        <section id="sec-permainan" class="hidden space-y-6">
+            <div class="flex items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <button onclick="navigateTo('menu')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Menu Utama
+                </button>
+                <h2 class="text-lg font-bold text-purple-700">Permainan Menyimak</h2>
+            </div>
+
+            <!-- Game Tabs Selector -->
+            <div class="flex flex-wrap gap-1.5 border-b border-slate-200 pb-2">
+                <button onclick="switchGame('A')" id="btn-game-A" class="game-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-purple-600 text-white shadow">
+                    Game 1: Siapa Namanya?
+                </button>
+                <button onclick="switchGame('B')" id="btn-game-B" class="game-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-200 text-slate-700">
+                    Game 2: Tangkap Informasi!
+                </button>
+                <button onclick="switchGame('C')" id="btn-game-C" class="game-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-200 text-slate-700">
+                    Game 3: Benar atau Salah
+                </button>
+                <button onclick="switchGame('D')" id="btn-game-D" class="game-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-200 text-slate-700">
+                    Game 4: Apa Pesannya?
+                </button>
+            </div>
+
+            <!-- GAME CONTAINER -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-purple-100 space-y-5">
+                <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                    <div>
+                        <h3 id="game-title" class="text-base font-bold text-purple-800">Game 1: Siapa Namanya?</h3>
+                        <p id="game-desc" class="text-xs text-slate-400">Tebak tokoh percakapan dengan tepat!</p>
+                    </div>
+                    <div class="bg-sun-100 px-3 py-1 rounded-2xl flex items-center gap-1 text-amber-800 font-bold text-xs">
+                        <i class="fa-solid fa-star text-sun-500"></i>
+                        <span id="game-stars-count">0</span> Bintang
+                    </div>
+                </div>
+
+                <div id="game-body-box" class="space-y-3">
+                    <!-- Inserted dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 9. KUIS CERIA (10 SOAL) ================= -->
+        <section id="sec-kuis" class="hidden space-y-6">
+            <div class="flex items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <button onclick="navigateTo('menu')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Menu Utama
+                </button>
+                <div class="text-right">
+                    <span class="text-[10px] text-slate-400 font-bold">Progress Kuis</span>
+                    <h4 class="text-xs font-bold text-rose-600"><span id="quiz-current-no">1</span> / 10 Soal</h4>
+                </div>
+            </div>
+
+            <!-- Quiz Progress Bar -->
+            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-rose-500 h-full w-1/10 transition-all duration-300"></div>
+            </div>
+
+            <div class="bg-white p-5 md:p-6 rounded-3xl shadow-sm border border-rose-100 space-y-5">
+                <!-- Replay Prompt -->
+                <div class="bg-rose-50 p-3 rounded-2xl border border-rose-200 flex justify-between items-center gap-2 text-xs">
+                    <span id="quiz-audio-topic" class="font-bold text-rose-800">Tema Percakapan</span>
+                    <button onclick="playQuizAudioPrompt()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-1.5 px-3 rounded-xl shadow shrink-0 text-[11px]">
+                        <i class="fa-solid fa-volume-high mr-1"></i> Putar Audio
+                    </button>
+                </div>
+
+                <!-- Question Text -->
+                <div class="space-y-1">
+                    <span id="quiz-type-badge" class="px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full text-[10px] font-bold">Soal Kuis</span>
+                    <h3 id="quiz-question-text" class="text-base md:text-lg font-bold text-slate-800">
+                        Soal Kuis...
+                    </h3>
+                </div>
+
+                <!-- Options Box -->
+                <div id="quiz-options-container" class="space-y-2">
+                    <!-- Inserted by JS -->
+                </div>
+
+                <!-- Explanation Box -->
+                <div id="quiz-explanation-box" class="hidden p-3 rounded-2xl text-xs space-y-1">
+                    <p id="quiz-feedback-title" class="font-bold"></p>
+                    <p id="quiz-explanation-text" class="text-slate-600"></p>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="flex justify-between items-center pt-3 border-t border-slate-100">
+                    <button onclick="prevQuizQuestion()" id="btn-quiz-prev" class="bg-slate-100 text-slate-600 px-3 py-2 rounded-xl font-bold text-xs">
+                        <i class="fa-solid fa-chevron-left mr-1"></i> Sebelum
+                    </button>
+                    <button onclick="nextQuizQuestion()" id="btn-quiz-next" class="bg-rose-600 text-white px-5 py-2 rounded-xl font-bold text-xs shadow flex items-center gap-1">
+                        <span>Lanjut</span> <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 10. TANTANGAN MENCERITAKAN ================= -->
+        <section id="sec-tantangan" class="hidden space-y-6">
+            <div class="flex items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <button onclick="navigateTo('menu')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Menu Utama
+                </button>
+                <h2 class="text-lg font-bold text-indigo-700">Tantangan Menceritakan Kembali</h2>
+            </div>
+
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-indigo-100 space-y-4">
+                <p class="text-xs text-slate-600 bg-indigo-50 p-3 rounded-2xl border border-indigo-200">
+                    <i class="fa-solid fa-comment text-indigo-600 mr-1"></i>
+                    Pilih salah satu cerita percakapan, lalu ceritakan kembali dengan kata-katamu sendiri secara singkat!
+                </p>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Pilih Cerita Percakapan:</label>
+                    <select id="summary-topic-select" class="w-full p-2.5 rounded-xl border border-slate-300 font-bold text-xs">
+                        <option value="Aku dan Teman Baruku">Aku dan Teman Baruku (Siti & Beni)</option>
+                        <option value="Membantu Ibu">Membantu Ibu (Ibu & Dina)</option>
+                        <option value="Menjaga Kebersihan Pantai">Menjaga Kebersihan Pantai (Andi & Mira)</option>
+                    </select>
+                </div>
+
+                <div class="space-y-3 pt-2">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">1. Tokoh yang berbicara adalah:</label>
+                        <input type="text" id="summary-input-tokoh" placeholder="Contoh: Siti dan Beni" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">2. Mereka membicarakan tentang:</label>
+                        <input type="text" id="summary-input-topik" placeholder="Contoh: Perkenalan murid baru di kelas" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">3. Pesan dari percakapan itu adalah:</label>
+                        <input type="text" id="summary-input-kesimpulan" placeholder="Contoh: Kita harus bersikap ramah kepada teman baru" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs">
+                    </div>
+                </div>
+
+                <button onclick="saveSummaryChallenge()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-2xl shadow transition text-xs flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-floppy-disk"></i> Simpan Ceritaku
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= 11. REFLEKSI PEMBELAJARAN ================= -->
+        <section id="sec-refleksi" class="hidden space-y-6">
+            <div class="flex items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <button onclick="navigateTo('menu')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Menu Utama
+                </button>
+                <h2 class="text-lg font-bold text-pink-700">Refleksi Belajarku</h2>
+            </div>
+
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-pink-100 space-y-5">
+                <div>
+                    <h3 class="font-bold text-slate-800 text-xs mb-3">Bagaimana perasaanmu setelah menyimak hari ini?</h3>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="selectReflectionLevel(3)" id="ref-lvl-3" class="ref-btn p-3 rounded-2xl border-2 border-slate-200 text-center hover:border-emerald-500 transition">
+                            <span class="text-3xl">😊</span>
+                            <p class="font-bold text-[11px] text-emerald-700 mt-1">Saya Sudah Paham</p>
+                        </button>
+                        <button onclick="selectReflectionLevel(2)" id="ref-lvl-2" class="ref-btn p-3 rounded-2xl border-2 border-slate-200 text-center hover:border-amber-500 transition">
+                            <span class="text-3xl">🙂</span>
+                            <p class="font-bold text-[11px] text-amber-700 mt-1">Saya Mulai Paham</p>
+                        </button>
+                        <button onclick="selectReflectionLevel(1)" id="ref-lvl-1" class="ref-btn p-3 rounded-2xl border-2 border-slate-200 text-center hover:border-rose-500 transition">
+                            <span class="text-3xl">🙋</span>
+                            <p class="font-bold text-[11px] text-rose-700 mt-1">Perlu Bantuan</p>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-3 pt-2 border-t border-slate-100 text-xs">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">1. Cerita mana yang paling kamu sukai?</label>
+                        <input type="text" id="ref-q1" placeholder="Contoh: Menjaga Kebersihan Pantai" class="w-full p-2.5 rounded-xl border border-slate-300">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">2. Apa yang akan kamu lakukan agar makin pinter menyimak?</label>
+                        <input type="text" id="ref-q5" placeholder="Contoh: Mendengarkan dengan lebih tenang" class="w-full p-2.5 rounded-xl border border-slate-300">
+                    </div>
+                </div>
+
+                <button onclick="saveReflection()" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 rounded-2xl shadow transition text-xs flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-heart"></i> Simpan Refleksi
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= 12. HASIL BELAJARKU & GOOGLE DOCS ================= -->
+        <section id="sec-report" class="hidden space-y-6">
+            <div class="no-print flex items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <button onclick="navigateTo('menu')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Menu Utama
+                </button>
+                <h2 class="text-lg font-bold text-ocean-700">Laporan Hasil Belajar Digital</h2>
+            </div>
+
+            <!-- RAPOR PRINTABLE CARD -->
+            <div id="printable-report" class="bg-white p-6 rounded-3xl shadow-lg border border-ocean-200 space-y-5">
+                <div class="border-b-2 border-ocean-500 pb-3 flex justify-between items-start">
+                    <div>
+                        <h2 class="text-xl font-bold text-ocean-800">LEMBAR HASIL BELAJAR PESERTA DIDIK</h2>
+                        <p class="text-xs text-slate-500">Petualangan Si Penyimak Cerdas • Bahasa Indonesia Kelas II SD</p>
+                    </div>
+                    <div class="text-right text-xs text-slate-500">
+                        <p class="font-bold text-slate-800">SD NEGERI 028 SENAYANG</p>
+                        <p>Kabupaten Lingga, Kepri</p>
+                    </div>
+                </div>
+
+                <!-- Student Info -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 bg-ocean-50 p-3 rounded-2xl text-xs">
+                    <div>
+                        <span class="text-slate-400 font-bold block">Nama:</span>
+                        <strong id="rep-student-name" class="text-slate-800 text-sm">-</strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 font-bold block">Kelas:</span>
+                        <strong id="rep-student-class" class="text-slate-800 text-sm">Kelas II SD</strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 font-bold block">Tanggal:</span>
+                        <strong id="rep-date" class="text-slate-800 text-sm">-</strong>
+                    </div>
+                </div>
+
+                <!-- Scores -->
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="bg-rose-500 text-white p-4 rounded-2xl text-center">
+                        <span class="text-[10px] font-bold text-rose-100 block">SKOR KUIS</span>
+                        <h3 id="rep-quiz-score" class="text-3xl font-extrabold">0</h3>
+                        <p id="rep-quiz-detail" class="text-[10px]">0/10 Benar</p>
+                    </div>
+
+                    <div class="bg-purple-500 text-white p-4 rounded-2xl text-center">
+                        <span class="text-[10px] font-bold text-purple-100 block">PERMAINAN</span>
+                        <h3 id="rep-game-stars" class="text-3xl font-extrabold">0 ⭐</h3>
+                        <p class="text-[10px]">Bintang Terkumpul</p>
+                    </div>
+
+                    <div class="bg-emerald-500 text-white p-4 rounded-2xl text-center">
+                        <span class="text-[10px] font-bold text-emerald-100 block">PREDIKAT</span>
+                        <h3 id="rep-predikat" class="text-xl font-bold mt-1">Cukup</h3>
+                    </div>
+                </div>
+
+                <!-- Summary & Reflection -->
+                <div class="border border-slate-200 rounded-2xl p-3 text-xs space-y-1">
+                    <h4 class="font-bold text-slate-800 border-b pb-1">Tantangan Menceritakan Kembali:</h4>
+                    <p><strong>Judul:</strong> <span id="rep-summary-topic">-</span></p>
+                    <p><strong>Tokoh:</strong> <span id="rep-summary-tokoh">-</span></p>
+                    <p><strong>Pesan:</strong> <span id="rep-summary-kesimpulan">-</span></p>
+                </div>
+
+                <div class="border border-slate-200 rounded-2xl p-3 text-xs space-y-1">
+                    <h4 class="font-bold text-slate-800 border-b pb-1">Refleksi Siswa:</h4>
+                    <p><strong>Tingkat Pemahaman:</strong> <span id="rep-ref-level">-</span></p>
+                    <p><strong>Cerita Favorit:</strong> <span id="rep-ref-q1">-</span></p>
+                </div>
+
+                <div class="pt-4 flex justify-between items-end text-xs text-slate-500">
+                    <div>
+                        <p>Mengetahui,</p>
+                        <p class="font-bold mt-6">Guru Kelas II SD</p>
+                    </div>
+                    <div class="text-right">
+                        <p>Senayang, <span id="rep-signature-date">-- -- 2026</span></p>
+                        <p class="font-bold mt-6">Peserta Didik</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUTTON ACTIONS (NO PRINT) -->
+            <div class="no-print space-y-3">
+                <div class="flex flex-wrap gap-2 justify-center text-xs">
+                    <button onclick="window.print()" class="bg-slate-800 text-white font-bold px-4 py-2.5 rounded-xl shadow">
+                        <i class="fa-solid fa-print mr-1"></i> Cetak Laporan
+                    </button>
+
+                    <button onclick="downloadReportHTML()" class="bg-teal-600 text-white font-bold px-4 py-2.5 rounded-xl shadow">
+                        <i class="fa-solid fa-download mr-1"></i> Unduh File HTML
+                    </button>
+
+                    <button onclick="openGoogleDocsSyncModal()" class="bg-blue-600 text-white font-bold px-5 py-2.5 rounded-xl shadow">
+                        <i class="fa-solid fa-cloud-arrow-up mr-1"></i> Simpan ke Google Dokumen Guru
+                    </button>
+                </div>
+
+                <!-- GAS Config -->
+                <div id="gdoc-config-box" class="bg-white p-4 rounded-2xl border border-blue-200 text-xs space-y-2 max-w-lg mx-auto">
+                    <h4 class="font-bold text-blue-900"><i class="fa-solid fa-link mr-1"></i> Konfigurasi Link Google Apps Script Guru:</h4>
+                    <input type="text" id="gas-url-input" placeholder="https://script.google.com/macros/s/.../exec" class="w-full p-2 rounded-xl border border-slate-300 font-mono text-[11px]">
+                    <button onclick="sendDataToGoogleDocs()" class="w-full bg-blue-600 text-white font-bold py-2 rounded-xl">
+                        Kirim Hasil Sekarang
+                    </button>
+                    <div id="gdoc-status-msg" class="hidden p-2 rounded-xl font-bold text-center text-[11px]"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-4 text-xs text-center border-t border-slate-800 no-print">
+        <p class="font-bold text-slate-200">MEDIA PEMBELAJARAN INTERAKTIF BAHASA INDONESIA - ELEMEN MENYIMAK</p>
+        <p>SD NEGERI 028 SENAYANG • KABUPATEN LINGGA • KEPULAUAN RIAU</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        /* ================= APP STATE ================= */
+        const appState = {
+            studentName: '',
+            studentClass: 'Kelas II SD',
+            currentSection: 'welcome',
+            currentConversationKey: 'diriku',
+            speechRate: 0.9, // Slightly slower for Grade 2
+            selectedVoice: null,
+            
+            // Mini Games
+            currentGame: 'A',
+            gameStars: 0,
+            gameAnswers: {},
+
+            // Quiz (10 Questions)
+            quizCurrentIndex: 0,
+            quizUserAnswers: {},
+            quizScore: 0,
+            quizCorrectCount: 0,
+
+            // Summary
+            summaryData: { topic: 'Aku dan Teman Baruku', tokoh: '', topik: '', kesimpulan: '' },
+
+            // Reflection
+            reflectionData: { level: 3, q1: '', q5: '' },
+
+            gasUrl: localStorage.getItem('gas_url_penyimak_k2') || ''
+        };
+
+        /* ================= GRADE 2 CONVERSATIONS DATA ================= */
+        const conversations = {
+            diriku: {
+                title: 'Aku dan Teman Baruku',
+                subtitle: 'Percakapan Siti dan Beni di Sekolah',
+                themeBadge: 'Tema: Diriku (Kelas II)',
+                transcript: [
+                    { speaker: 'Siti', text: 'Selamat pagi, Beni!' },
+                    { speaker: 'Beni', text: 'Selamat pagi, Siti!' },
+                    { speaker: 'Siti', text: 'Namaku Siti. Siapa namamu?' },
+                    { speaker: 'Beni', text: 'Namaku Beni. Aku murid baru di kelas ini.' },
+                    { speaker: 'Siti', text: 'Senang berkenalan denganmu, Beni. Kamu tinggal di mana?' },
+                    { speaker: 'Beni', text: 'Aku tinggal tidak jauh dari sekolah.' },
+                    { speaker: 'Siti', text: 'Kalau begitu, mari kita belajar dan bermain bersama!' },
+                    { speaker: 'Beni', text: 'Terima kasih, Siti. Aku senang mempunyai teman baru.' }
+                ],
+                questions: [
+                    {
+                        id: 'd1',
+                        q: '1. Siapa nama kedua anak yang sedang berbicara?',
+                        options: ['Siti dan Beni', 'Lani dan Edo', 'Dayu dan Udin'],
+                        answer: 0
+                    },
+                    {
+                        id: 'd2',
+                        q: '2. Siapa yang menjadi murid baru di kelas II?',
+                        options: ['Siti', 'Beni', 'Ibu Guru'],
+                        answer: 1
+                    },
+                    {
+                        id: 'd3',
+                        q: '3. Di mana tempat tinggal Beni?',
+                        options: ['Jauh di luar kota', 'Tidak jauh dari sekolah', 'Di tepi hutan'],
+                        answer: 1
+                    },
+                    {
+                        id: 'd4',
+                        q: '4. Bagaimana sikap Siti kepada Beni murid baru?',
+                        options: ['Ramah dan mengajak bermain bersama', 'Acuh tak acuh', 'Marah-marah'],
+                        answer: 0
+                    },
+                    {
+                        id: 'd5',
+                        q: '5. Apa pesan dari percakapan Siti dan Beni?',
+                        options: ['Kita harus bersikap ramah kepada teman baru', 'Jangan menyapa teman di kelas', 'Murid baru tidak boleh bermain'],
+                        answer: 0
+                    }
+                ]
+            },
+            keluargaku: {
+                title: 'Membantu Ibu',
+                subtitle: 'Percakapan Ibu dan Dina di Rumah',
+                themeBadge: 'Tema: Keluargaku (Kelas II)',
+                transcript: [
+                    { speaker: 'Ibu', text: 'Dina, tolong bantu Ibu merapikan meja makan, ya.' },
+                    { speaker: 'Dina', text: 'Baik, Bu. Dina akan membantu.' },
+                    { speaker: 'Ibu', text: 'Setelah itu, letakkan piring di tempat cucian.' },
+                    { speaker: 'Dina', text: 'Baik, Bu. Apakah Dina boleh membantu menyapu lantai juga?' },
+                    { speaker: 'Ibu', text: 'Tentu, Nak. Terima kasih sudah rajin membantu.' },
+                    { speaker: 'Dina', text: 'Kita harus saling membantu di rumah.' }
+                ],
+                questions: [
+                    {
+                        id: 'k1',
+                        q: '1. Siapa tokoh yang berbicara dengan Dina?',
+                        options: ['Ibu', 'Kakak', 'Nenek'],
+                        answer: 0
+                    },
+                    {
+                        id: 'k2',
+                        q: '2. Apa yang diminta Ibu kepada Dina pertama kali?',
+                        options: ['Merapikan meja makan', 'Mencuci baju', 'Membeli beras'],
+                        answer: 0
+                    },
+                    {
+                        id: 'k3',
+                        q: '3. Di mana Dina harus meletakkan piring kotor?',
+                        options: ['Di tempat cucian', 'Di dalam lemari', 'Di atas kasur'],
+                        answer: 0
+                    },
+                    {
+                        id: 'k4',
+                        q: '4. Apa pekerjaan tambahan yang ingin dilakukan Dina?',
+                        options: ['Menyapu lantai', 'Menonton televisi', 'Tidur siang'],
+                        answer: 0
+                    },
+                    {
+                        id: 'k5',
+                        q: '5. Apa pesan utama dari percakapan Ibu dan Dina?',
+                        options: ['Saling membantu membuat pekerjaan rumah terasa ringan', 'Hanya Ibu yang boleh bekerja di rumah', 'Piring kotor biarkan saja'],
+                        answer: 0
+                    }
+                ]
+            },
+            lingkungan: {
+                title: 'Menjaga Kebersihan Pantai',
+                subtitle: 'Percakapan Andi dan Mira di Pantai Senayang',
+                themeBadge: 'Tema: Lingkunganku (Kelas II)',
+                transcript: [
+                    { speaker: 'Andi', text: 'Mira, mengapa kita harus menjaga kebersihan pantai?' },
+                    { speaker: 'Mira', text: 'Agar pantai tetap bersih dan indah.' },
+                    { speaker: 'Andi', text: 'Ke mana kita harus membuang sampah?' },
+                    { speaker: 'Mira', text: 'Kita harus membuang sampah ke tempat sampah.' },
+                    { speaker: 'Andi', text: 'Bolehkah kita membuang sampah plastik ke laut?' },
+                    { speaker: 'Mira', text: 'Tidak boleh. Sampah plastik dapat mengganggu kehidupan hewan laut.' },
+                    { speaker: 'Andi', text: 'Benar. Mari kita menjaga pantai bersama-sama!' }
+                ],
+                questions: [
+                    {
+                        id: 'l1',
+                        q: '1. Siapa nama dua anak yang berbincang tentang pantai?',
+                        options: ['Andi dan Mira', 'Rudi dan Sita', 'Budi dan Ani'],
+                        answer: 0
+                    },
+                    {
+                        id: 'l2',
+                        q: '2. Mengapa pantai Senayang harus dijaga kebersihannya?',
+                        options: ['Agar pantai tetap bersih dan indah', 'Agar pantai menjadi kotor', 'Agar ikan takut'],
+                        answer: 0
+                    },
+                    {
+                        id: 'l3',
+                        q: '3. Ke mana kita wajib membuang sampah?',
+                        options: ['Ke tempat sampah', 'Ke dalam laut', 'Dibiarkan di pasir'],
+                        answer: 0
+                    },
+                    {
+                        id: 'l4',
+                        q: '4. Mengapa sampah plastik TIDAK boleh dibuang ke laut?',
+                        options: ['Dapat mengganggu kehidupan hewan laut', 'Karena air laut menjadi asin', 'Karena plastik terapung'],
+                        answer: 0
+                    },
+                    {
+                        id: 'l5',
+                        q: '5. Apa pesan yang ingin disampaikan Andi dan Mira?',
+                        options: ['Mari kita menjaga kebersihan pantai bersama-sama', 'Membuang sampah di mana saja boleh', 'Pantai tidak perlu dibersihkan'],
+                        answer: 0
+                    }
+                ]
+            }
+        };
+
+        /* ================= GRADE 2 QUIZ QUESTIONS (10 QUESTIONS) ================= */
+        const quizQuestions = [
+            {
+                topic: 'Diriku',
+                q: 'Siapa murid baru yang berkenalan dengan Siti di kelas II?',
+                options: ['Beni', 'Edo', 'Udin'],
+                ans: 0,
+                exp: 'Beni berkata: "Namaku Beni. Aku murid baru di kelas ini."'
+            },
+            {
+                topic: 'Diriku',
+                q: 'Apa yang diajak Siti kepada Beni setelah berkenalan?',
+                options: ['Mari kita belajar dan bermain bersama', 'Mari kita pulang sekarang', 'Jangan duduk di sini'],
+                ans: 0,
+                exp: 'Siti mengajak Beni belajar dan bermain bersama dengan ramah.'
+            },
+            {
+                topic: 'Diriku',
+                q: 'Bagaimana perasaan Beni mempunyai teman baru seperti Siti?',
+                options: ['Senang', 'Sedih', 'Takut'],
+                ans: 0,
+                exp: 'Beni menyampaikan terima kasih dan merasa senang mempunyai teman baru.'
+            },
+            {
+                topic: 'Keluargaku',
+                q: 'Apa tugas pertama yang diminta Ibu kepada Dina?',
+                options: ['Merapikan meja makan', 'Menyiram bunga', 'Membeli garam'],
+                ans: 0,
+                exp: 'Ibu meminta tolong kepada Dina untuk merapikan meja makan.'
+            },
+            {
+                topic: 'Keluargaku',
+                q: 'Di mana Dina diminta meletakkan piring setelah sarapan?',
+                options: ['Di tempat cucian', 'Di dalam lemari', 'Di teras rumah'],
+                ans: 0,
+                exp: 'Ibu meminta piring diletakkan di tempat cucian.'
+            },
+            {
+                topic: 'Keluargaku',
+                q: 'Sikap yang ditunjukkan Dina saat diminta tolong Ibu adalah...',
+                options: ['Anak yang rajin dan penurut', 'Anak yang pemalas', 'Anak yang suka menangis'],
+                ans: 0,
+                exp: 'Dina langsung menjawab "Baik, Bu" dan rajin membantu.'
+            },
+            {
+                topic: 'Lingkunganku',
+                q: 'Mengapa pantai di kawasan pesisir Senayang harus dibersihkan?',
+                options: ['Agar pantai indah dan bersih', 'Agar pantai dipenuhi sampah', 'Agar hewan laut takut'],
+                ans: 0,
+                exp: 'Mira menjelaskan agar pantai tetap bersih dan indah.'
+            },
+            {
+                topic: 'Lingkunganku',
+                q: 'Ke mana seharusnya kita membuang sampah makanan atau plastik?',
+                options: ['Ke tempat sampah', 'Ke laut', 'Di selokan'],
+                ans: 0,
+                exp: 'Mira menegaskan sampah harus dibuang ke tempat sampah.'
+            },
+            {
+                topic: 'Lingkunganku',
+                q: 'Bahaya utama membuang sampah plastik ke laut adalah...',
+                options: ['Mengganggu kehidupan hewan laut', 'Membuat angin bertiup kencang', 'Membuat perahu tenggelam'],
+                ans: 0,
+                exp: 'Sampah plastik di laut dapat membahayakan dan mengganggu hewan laut.'
+            },
+            {
+                topic: 'Menyimak',
+                q: 'Pernyataan: "Menyimak adalah mendengarkan dengan penuh perhatian untuk memahami pesan."',
+                options: ['BENAR', 'SALAH'],
+                ans: 0,
+                exp: 'BENAR. Menyimak berarti mendengarkan secara sungguh-sungguh dengan pikiran fokus.'
+            }
+        ];
+
+        /* ================= APP INITIALIZATION & NAVIGATION ================= */
+        window.addEventListener('DOMContentLoaded', () => {
+            initSpeechSynthesis();
+            const storedName = localStorage.getItem('student_name_penyimak_k2');
+            if (storedName) {
+                appState.studentName = storedName;
+                updateUserBadge();
+            }
+            if (appState.gasUrl) {
+                document.getElementById('gas-url-input').value = appState.gasUrl;
+            }
+        });
+
+        function startApp() {
+            const nameInput = document.getElementById('input-student-name').value.trim();
+            if (!nameInput) {
+                alert('Halo! Isikan namamu terlebih dahulu ya!');
+                return;
+            }
+            appState.studentName = nameInput;
+            localStorage.setItem('student_name_penyimak_k2', nameInput);
+            updateUserBadge();
+            navigateTo('menu');
+        }
+
+        function updateUserBadge() {
+            document.getElementById('header-student-name').innerText = appState.studentName;
+            document.getElementById('user-badge').classList.remove('hidden');
+        }
+
+        function confirmResetUser() {
+            if (confirm('Ingin mengganti nama siswa?')) {
+                localStorage.removeItem('student_name_penyimak_k2');
+                location.reload();
+            }
+        }
+
+        function navigateTo(sectionId) {
+            const sections = ['welcome', 'menu', 'tujuan', 'pengenalan', 'conversation', 'permainan', 'kuis', 'tantangan', 'refleksi', 'report'];
+            sections.forEach(sec => {
+                const el = document.getElementById(`sec-${sec}`);
+                if (el) el.classList.add('hidden');
+            });
+
+            stopConversationAudio();
+
+            const target = document.getElementById(`sec-${sectionId}`);
+            if (target) {
+                target.classList.remove('hidden');
+                appState.currentSection = sectionId;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        /* ================= WEB SPEECH API (TTS) ================= */
+        function initSpeechSynthesis() {
+            const badge = document.getElementById('tts-status-badge');
+            if (!('speechSynthesis' in window)) {
+                if (badge) {
+                    badge.innerText = 'Audio Tidak Didukung (Gunakan Mode Guru)';
+                    badge.className = 'text-rose-600 font-bold';
+                }
+                return;
+            }
+
+            function loadVoices() {
+                const voices = window.speechSynthesis.getVoices();
+                const idVoice = voices.find(v => v.lang.includes('id') || v.lang.includes('ID'));
+                if (idVoice) {
+                    appState.selectedVoice = idVoice;
+                    if (badge) {
+                        badge.innerText = `Suara Bahasa Indonesia Aktif`;
+                        badge.className = 'text-emerald-600 font-bold';
+                    }
+                }
+            }
+
+            loadVoices();
+            if (speechSynthesis.onvoiceschanged !== undefined) {
+                speechSynthesis.onvoiceschanged = loadVoices;
+            }
+        }
+
+        function openConversation(key) {
+            appState.currentConversationKey = key;
+            const conv = conversations[key];
+            if (!conv) return;
+
+            document.getElementById('conv-theme-badge').innerText = conv.themeBadge;
+            document.getElementById('conv-title').innerText = conv.title;
+            document.getElementById('conv-subtitle').innerText = conv.subtitle;
+
+            const transcriptContainer = document.getElementById('transcript-content');
+            transcriptContainer.innerHTML = '';
+            conv.transcript.forEach((line) => {
+                const item = document.createElement('div');
+                item.className = 'p-2.5 rounded-xl bg-white border border-ocean-100 flex gap-2 items-start';
+                item.innerHTML = `
+                    <span class="font-bold text-[11px] px-2 py-0.5 rounded-lg text-white ${line.speaker === 'Siti' || line.speaker === 'Ibu' || line.speaker === 'Andi' ? 'bg-ocean-500' : 'bg-amber-500'} shrink-0">
+                        ${line.speaker}
+                    </span>
+                    <p class="text-xs text-slate-700 font-medium">${line.text}</p>
+                `;
+                transcriptContainer.appendChild(item);
+            });
+
+            renderConversationQuestions(conv.questions);
+
+            document.getElementById('transcript-box').classList.add('hidden');
+            document.getElementById('btn-toggle-transcript').innerHTML = '<i class="fa-solid fa-eye"></i> Tampilkan Teks';
+
+            navigateTo('conversation');
+        }
+
+        function toggleTranscript() {
+            const box = document.getElementById('transcript-box');
+            const btn = document.getElementById('btn-toggle-transcript');
+            if (box.classList.contains('hidden')) {
+                box.classList.remove('hidden');
+                btn.innerHTML = '<i class="fa-solid fa-eye-slash"></i> Sembunyikan Teks';
+            } else {
+                box.classList.add('hidden');
+                btn.innerHTML = '<i class="fa-solid fa-eye"></i> Tampilkan Teks';
+            }
+        }
+
+        function playConversationAudio() {
+            const conv = conversations[appState.currentConversationKey];
+            if (!conv || !('speechSynthesis' in window)) {
+                alert('Audio otomatis tidak tersedia. Silakan gunakan Mode Guru.');
+                return;
+            }
+
+            window.speechSynthesis.cancel();
+
+            const fullText = conv.transcript.map(t => `${t.speaker} berkata: ${t.text}`).join('. ');
+            const utterance = new SpeechSynthesisUtterance(fullText);
+            
+            utterance.lang = 'id-ID';
+            utterance.rate = appState.speechRate;
+            if (appState.selectedVoice) utterance.voice = appState.selectedVoice;
+
+            utterance.onstart = () => {
+                document.getElementById('player-status-text').innerText = 'Audio Sedang Diputar...';
+                document.getElementById('wave-container').classList.remove('hidden');
+            };
+
+            utterance.onend = () => {
+                document.getElementById('player-status-text').innerText = 'Selesai Memutar Audio';
+                document.getElementById('wave-container').classList.add('hidden');
+            };
+
+            utterance.onerror = () => {
+                document.getElementById('player-status-text').innerText = 'Audio Berhenti';
+                document.getElementById('wave-container').classList.add('hidden');
+            };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function pauseConversationAudio() {
+            if (window.speechSynthesis && window.speechSynthesis.speaking) {
+                if (window.speechSynthesis.paused) {
+                    window.speechSynthesis.resume();
+                    document.getElementById('player-status-text').innerText = 'Audio Dilanjutkan...';
+                } else {
+                    window.speechSynthesis.pause();
+                    document.getElementById('player-status-text').innerText = 'Audio Dijeda';
+                }
+            }
+        }
+
+        function stopConversationAudio() {
+            if (window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+                document.getElementById('player-status-text').innerText = 'Audio Diberhentikan';
+                document.getElementById('wave-container').classList.add('hidden');
+            }
+        }
+
+        function renderConversationQuestions(questions) {
+            const container = document.getElementById('conv-questions-container');
+            container.innerHTML = '';
+
+            questions.forEach((qObj) => {
+                const card = document.createElement('div');
+                card.className = 'p-3 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs';
+                
+                let optionsHTML = '';
+                qObj.options.forEach((opt, optIdx) => {
+                    optionsHTML += `
+                        <label class="flex items-center gap-2 p-2 rounded-xl bg-white border border-slate-200 hover:border-ocean-400 cursor-pointer text-slate-700 transition">
+                            <input type="radio" name="q_${qObj.id}" value="${optIdx}" onchange="checkConvAnswer('${qObj.id}', ${optIdx}, ${qObj.answer})" class="text-ocean-600">
+                            <span>${opt}</span>
+                        </label>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <h4 class="font-bold text-slate-800">${qObj.q}</h4>
+                    <div class="space-y-1.5">${optionsHTML}</div>
+                    <div id="feedback_${qObj.id}" class="hidden font-bold p-2 rounded-xl"></div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function checkConvAnswer(qId, chosenIdx, correctIdx) {
+            const feedbackEl = document.getElementById(`feedback_${qId}`);
+            if (!feedbackEl) return;
+
+            feedbackEl.classList.remove('hidden');
+            if (chosenIdx === correctIdx) {
+                feedbackEl.className = 'text-xs font-bold p-2 rounded-xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+                feedbackEl.innerHTML = '<i class="fa-solid fa-circle-check mr-1"></i> Hebat! Jawabanmu Benar!';
+            } else {
+                feedbackEl.className = 'text-xs font-bold p-2 rounded-xl bg-rose-100 text-rose-800 border border-rose-300';
+                feedbackEl.innerHTML = '<i class="fa-solid fa-rotate-right mr-1"></i> Hampir benar, ayo dengarkan cerita lagi ya!';
+            }
+        }
+
+        /* ================= GRADE 2 MINI GAMES LOGIC ================= */
+        function switchGame(gameCode) {
+            appState.currentGame = gameCode;
+            document.querySelectorAll('.game-tab-btn').forEach(btn => {
+                btn.className = 'game-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-200 text-slate-700';
+            });
+            document.getElementById(`btn-game-${gameCode}`).className = 'game-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-purple-600 text-white shadow';
+
+            const titleMap = {
+                A: 'Game 1: Siapa Namanya?',
+                B: 'Game 2: Tangkap Informasi!',
+                C: 'Game 3: Benar atau Salah',
+                D: 'Game 4: Apa Pesannya?'
+            };
+            document.getElementById('game-title').innerText = titleMap[gameCode];
+            renderGameContent(gameCode);
+        }
+
+        function renderGameContent(gameCode) {
+            const box = document.getElementById('game-body-box');
+            box.innerHTML = '';
+
+            if (gameCode === 'A') {
+                box.innerHTML = `
+                    <div class="p-3 bg-purple-50 rounded-2xl border border-purple-200 space-y-2 text-xs">
+                        <p class="font-bold text-slate-800">1. Siapa anak yang menawarkan bantuan menyapu lantai kepada Ibunya?</p>
+                        <div class="flex gap-2">
+                            <button onclick="answerGame('A1', 'Dina', 'Dina')" class="bg-white hover:bg-purple-100 px-4 py-2 rounded-xl border font-bold text-purple-700">Dina</button>
+                            <button onclick="answerGame('A1', 'Siti', 'Dina')" class="bg-white hover:bg-purple-100 px-4 py-2 rounded-xl border font-bold text-purple-700">Siti</button>
+                        </div>
+                        <div id="gmsg_A1" class="font-bold"></div>
+                    </div>
+                `;
+            } else if (gameCode === 'B') {
+                box.innerHTML = `
+                    <div class="p-3 bg-purple-50 rounded-2xl border border-purple-200 space-y-2 text-xs">
+                        <p class="font-bold text-slate-800">Tangkap informasi: Ke mana tempat membuang sampah yang benar?</p>
+                        <div class="space-y-1.5">
+                            <button onclick="answerGame('B1', 'Benar', 'Benar')" class="w-full text-left bg-white p-2.5 rounded-xl border font-medium">A. Ke tempat sampah</button>
+                            <button onclick="answerGame('B1', 'Salah', 'Benar')" class="w-full text-left bg-white p-2.5 rounded-xl border font-medium">B. Dibuang ke laut</button>
+                        </div>
+                        <div id="gmsg_B1" class="font-bold"></div>
+                    </div>
+                `;
+            } else if (gameCode === 'C') {
+                box.innerHTML = `
+                    <div class="p-3 bg-purple-50 rounded-2xl border border-purple-200 space-y-2 text-xs">
+                        <p class="font-bold text-slate-800">Pernyataan: "Kita harus bersikap sombong dan tidak menyapa murid baru di kelas."</p>
+                        <div class="flex gap-3">
+                            <button onclick="answerGame('C1', 'BENAR', 'SALAH')" class="bg-white hover:bg-emerald-100 px-4 py-2 rounded-xl border font-bold text-emerald-700">BENAR</button>
+                            <button onclick="answerGame('C1', 'SALAH', 'SALAH')" class="bg-white hover:bg-rose-100 px-4 py-2 rounded-xl border font-bold text-rose-700">SALAH</button>
+                        </div>
+                        <div id="gmsg_C1" class="font-bold"></div>
+                    </div>
+                `;
+            } else if (gameCode === 'D') {
+                box.innerHTML = `
+                    <div class="p-3 bg-purple-50 rounded-2xl border border-purple-200 space-y-2 text-xs">
+                        <p class="font-bold text-slate-800">Apa pesan baik dari percakapan membantu Ibu di rumah?</p>
+                        <div class="space-y-1.5">
+                            <button onclick="answerGame('D1', 'Benar', 'Benar')" class="w-full text-left bg-white p-2.5 rounded-xl border font-medium">A. Bekerja sama membuat pekerjaan cepat selesai</button>
+                            <button onclick="answerGame('D1', 'Salah', 'Benar')" class="w-full text-left bg-white p-2.5 rounded-xl border font-medium">B. Tidak perlu membantu orang tua</button>
+                        </div>
+                        <div id="gmsg_D1" class="font-bold"></div>
+                    </div>
+                `;
+            }
+        }
+
+        function answerGame(gameId, userChoice, correctChoice) {
+            const msg = document.getElementById(`gmsg_${gameId}`);
+            if (!msg) return;
+
+            if (userChoice === correctChoice) {
+                msg.className = 'text-xs font-bold text-emerald-600 mt-1';
+                msg.innerHTML = '⭐ Hebat! Jawabanmu Benar (+1 Bintang)';
+                if (!appState.gameAnswers[gameId]) {
+                    appState.gameAnswers[gameId] = true;
+                    appState.gameStars += 1;
+                    document.getElementById('game-stars-count').innerText = appState.gameStars;
+                }
+            } else {
+                msg.className = 'text-xs font-bold text-rose-600 mt-1';
+                msg.innerHTML = ' Tidak apa-apa, ayo coba dengarkan lagi ya!';
+            }
+        }
+
+        /* ================= GRADE 2 QUIZ ENGINE ================= */
+        function startQuiz() {
+            appState.quizCurrentIndex = 0;
+            appState.quizUserAnswers = {};
+            renderQuizQuestion();
+            navigateTo('kuis');
+        }
+
+        function renderQuizQuestion() {
+            const idx = appState.quizCurrentIndex;
+            const qObj = quizQuestions[idx];
+
+            document.getElementById('quiz-current-no').innerText = idx + 1;
+            document.getElementById('quiz-progress-bar').style.width = `${((idx + 1) / quizQuestions.length) * 100}%`;
+
+            document.getElementById('quiz-audio-topic').innerText = `Tema: ${qObj.topic}`;
+            document.getElementById('quiz-question-text').innerText = `${idx + 1}. ${qObj.q}`;
+
+            const container = document.getElementById('quiz-options-container');
+            container.innerHTML = '';
+
+            qObj.options.forEach((opt, optIdx) => {
+                const isSelected = appState.quizUserAnswers[idx] === optIdx;
+                const optBtn = document.createElement('div');
+                optBtn.onclick = () => selectQuizOption(idx, optIdx);
+                optBtn.className = `p-3 rounded-2xl border-2 cursor-pointer transition text-xs font-bold flex items-center justify-between ${isSelected ? 'border-rose-500 bg-rose-50 text-rose-900' : 'border-slate-200 bg-white text-slate-700'}`;
+                optBtn.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="w-5 h-5 rounded-full border flex items-center justify-center text-[10px] ${isSelected ? 'bg-rose-500 text-white font-bold' : 'bg-slate-100'}">
+                            ${String.fromCharCode(65 + optIdx)}
+                        </span>
+                        <span>${opt}</span>
+                    </div>
+                `;
+                container.appendChild(optBtn);
+            });
+
+            const expBox = document.getElementById('quiz-explanation-box');
+            if (appState.quizUserAnswers[idx] !== undefined) {
+                const userChoice = appState.quizUserAnswers[idx];
+                const isCorrect = userChoice === qObj.ans;
+
+                expBox.classList.remove('hidden');
+                if (isCorrect) {
+                    expBox.className = 'p-3 rounded-2xl text-xs space-y-1 bg-emerald-100 text-emerald-900 border border-emerald-300';
+                    document.getElementById('quiz-feedback-title').innerHTML = '<i class="fa-solid fa-circle-check text-emerald-600"></i> Jawaban Benar!';
+                } else {
+                    expBox.className = 'p-3 rounded-2xl text-xs space-y-1 bg-rose-100 text-rose-900 border border-rose-300';
+                    document.getElementById('quiz-feedback-title').innerHTML = '<i class="fa-solid fa-circle-xmark text-rose-600"></i> Jawaban Kurang Tepat';
+                }
+                document.getElementById('quiz-explanation-text').innerText = qObj.exp;
+            } else {
+                expBox.classList.add('hidden');
+            }
+
+            document.getElementById('btn-quiz-prev').disabled = idx === 0;
+            const nextBtn = document.getElementById('btn-quiz-next');
+            if (idx === quizQuestions.length - 1) {
+                nextBtn.innerHTML = '<span>Lihat Hasil</span> <i class="fa-solid fa-award"></i>';
+            } else {
+                nextBtn.innerHTML = '<span>Lanjut</span> <i class="fa-solid fa-chevron-right"></i>';
+            }
+        }
+
+        function selectQuizOption(qIdx, optIdx) {
+            appState.quizUserAnswers[qIdx] = optIdx;
+            renderQuizQuestion();
+        }
+
+        function prevQuizQuestion() {
+            if (appState.quizCurrentIndex > 0) {
+                appState.quizCurrentIndex--;
+                renderQuizQuestion();
+            }
+        }
+
+        function nextQuizQuestion() {
+            if (appState.quizCurrentIndex < quizQuestions.length - 1) {
+                appState.quizCurrentIndex++;
+                renderQuizQuestion();
+            } else {
+                calculateQuizScore();
+                showReport();
+            }
+        }
+
+        function playQuizAudioPrompt() {
+            const qObj = quizQuestions[appState.quizCurrentIndex];
+            if (qObj.topic === 'Diriku') openConversation('diriku');
+            else if (qObj.topic === 'Keluargaku') openConversation('keluargaku');
+            else openConversation('lingkungan');
+            playConversationAudio();
+        }
+
+        function calculateQuizScore() {
+            let correctCount = 0;
+            quizQuestions.forEach((q, idx) => {
+                if (appState.quizUserAnswers[idx] === q.ans) correctCount++;
+            });
+            appState.quizScore = Math.round((correctCount / quizQuestions.length) * 100);
+            appState.quizCorrectCount = correctCount;
+        }
+
+        /* ================= SUMMARY & REFLECTIONS ================= */
+        function saveSummaryChallenge() {
+            const topic = document.getElementById('summary-topic-select').value;
+            const tokoh = document.getElementById('summary-input-tokoh').value.trim();
+            const kesimpulan = document.getElementById('summary-input-kesimpulan').value.trim();
+
+            if (!tokoh || !kesimpulan) {
+                alert('Lengkapi isian tokoh dan pesannya dulu ya!');
+                return;
+            }
+
+            appState.summaryData = { topic, tokoh, kesimpulan };
+            alert('Cerita kamu berhasil disimpan!');
+            navigateTo('menu');
+        }
+
+        function selectReflectionLevel(lvl) {
+            appState.reflectionData.level = lvl;
+            document.querySelectorAll('.ref-btn').forEach(btn => btn.classList.remove('border-emerald-500', 'border-amber-500', 'border-rose-500', 'bg-slate-50'));
+            const selectedBtn = document.getElementById(`ref-lvl-${lvl}`);
+            if (selectedBtn) {
+                selectedBtn.classList.add('bg-slate-50');
+                if (lvl === 3) selectedBtn.classList.add('border-emerald-500');
+                else if (lvl === 2) selectedBtn.classList.add('border-amber-500');
+                else selectedBtn.classList.add('border-rose-500');
+            }
+        }
+
+        function saveReflection() {
+            appState.reflectionData.q1 = document.getElementById('ref-q1').value;
+            appState.reflectionData.q5 = document.getElementById('ref-q5').value;
+            alert('Refleksi kamu tersimpan!');
+            navigateTo('menu');
+        }
+
+        /* ================= REPORT & GAS INTEGRATION ================= */
+        function showReport() {
+            calculateQuizScore();
+
+            document.getElementById('rep-student-name').innerText = appState.studentName || 'Peserta Didik';
+            
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+            document.getElementById('rep-date').innerText = dateStr;
+            document.getElementById('rep-signature-date').innerText = dateStr;
+
+            document.getElementById('rep-quiz-score').innerText = appState.quizScore;
+            document.getElementById('rep-quiz-detail').innerText = `${appState.quizCorrectCount} dari 10 Benar`;
+            document.getElementById('rep-game-stars').innerText = `${appState.gameStars} ⭐`;
+
+            let predikat = 'Cukup';
+            if (appState.quizScore >= 80) predikat = 'Sangat Baik (A)';
+            else if (appState.quizScore >= 70) predikat = 'Baik (B)';
+            document.getElementById('rep-predikat').innerText = predikat;
+
+            document.getElementById('rep-summary-topic').innerText = appState.summaryData.topic || '-';
+            document.getElementById('rep-summary-tokoh').innerText = appState.summaryData.tokoh || '-';
+            document.getElementById('rep-summary-kesimpulan').innerText = appState.summaryData.kesimpulan || '-';
+
+            const lvlMap = { 3: '😊 Saya Sudah Paham', 2: '🙂 Saya Mulai Paham', 1: '🙋 Perlu Bantuan' };
+            document.getElementById('rep-ref-level').innerText = lvlMap[appState.reflectionData.level] || '-';
+            document.getElementById('rep-ref-q1').innerText = appState.reflectionData.q1 || '-';
+
+            navigateTo('report');
+        }
+
+        function downloadReportHTML() {
+            const reportContent = document.getElementById('printable-report').outerHTML;
+            const blob = new Blob([`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Laporan Menyimak Kelas II - ${appState.studentName}</title>
+                    <script src="https://cdn.tailwindcss.com"><\/script>
+                </head>
+                <body class="p-6 bg-slate-100">
+                    <div class="max-w-2xl mx-auto">${reportContent}</div>
+                </body>
+                </html>
+            `], { type: 'text/html' });
+
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `Laporan_Menyimak_K2_${appState.studentName.replace(/\s+/g, '_')}.html`;
+            a.click();
+        }
+
+        function openGoogleDocsSyncModal() {
+            document.getElementById('gdoc-config-box').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        async function sendDataToGoogleDocs() {
+            const url = document.getElementById('gas-url-input').value.trim();
+            const statusMsg = document.getElementById('gdoc-status-msg');
+
+            if (!url) {
+                alert('Masukkan Web App URL Google Apps Script terlebih dahulu!');
+                return;
+            }
+
+            localStorage.setItem('gas_url_penyimak_k2', url);
+
+            statusMsg.classList.remove('hidden');
+            statusMsg.className = 'p-2 rounded-xl font-bold text-center text-xs bg-amber-100 text-amber-800 border border-amber-300';
+            statusMsg.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Sedang mengirim data ke Google Dokumen...';
+
+            const payload = {
+                nama: appState.studentName,
+                kelas: appState.studentClass,
+                skorKuis: appState.quizScore,
+                jawabanBenar: `${appState.quizCorrectCount} / 10`,
+                bintangGame: appState.gameStars,
+                topikKesimpulan: appState.summaryData.topic,
+                kesimpulanSiswa: appState.summaryData.kesimpulan,
+                refleksiPemahaman: appState.reflectionData.q1 || '-',
+                tanggal: new Date().toLocaleString('id-ID')
+            };
+
+            try {
+                await fetch(url, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                statusMsg.className = 'p-2 rounded-xl font-bold text-center text-xs bg-emerald-100 text-emerald-800 border border-emerald-300';
+                statusMsg.innerHTML = ' Data berhasil dikirim ke Google Dokumen Guru!';
+            } catch (err) {
+                statusMsg.className = 'p-2 rounded-xl font-bold text-center text-xs bg-rose-100 text-rose-800 border border-rose-300';
+                statusMsg.innerHTML = ' Gagal mengirim. Periksa koneksi internet & URL Apps Script.';
+            }
+        }
+    </script>
+</body>
+</html>
